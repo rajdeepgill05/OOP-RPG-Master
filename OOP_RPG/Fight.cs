@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace OOP_RPG
 {
@@ -8,32 +9,49 @@ namespace OOP_RPG
         List<Monster> Monsters { get; set; }
         public Game game { get; set; }
         public Hero hero { get; set; }
+        public Monster monster { get; set; }
         
         public Fight(Hero hero, Game game) {
             this.Monsters = new List<Monster>();
             this.hero = hero;
             this.game = game;
             this.AddMonster("Squid", 9, 8, 20);
+            this.AddMonster("DeathEater", 15, 8, 14);
+            this.AddMonster("GrindelWard", 19, 20, 18);
+            this.AddMonster("DarkLord", 20, 20, 19);
+            
+            //for last Monster
+            //this.monster = this.Monsters.Last() ;
+
+            //for Second Monster
+            //int MonsterNumber = 2;
+
+            //for First Monster with less tham 20 hit points
+            //this.monster = this.Monsters.Find(mons => mons.OriginalHP < 20);
+
+            // for First Monster with strength atleat 11
+            //this.monster = this.Monsters.Find(mons => mons.Strength > 10);
+
+            
+
+
         }
-        
+
         public void AddMonster(string name, int strength, int defense, int hp) {
-            var monster = new Monster();
-            monster.Name = name;
-            monster.Strength = strength;
-            monster.Defense = defense;
-            monster.OriginalHP = hp;
-            monster.CurrentHP = hp;
+            var monster = new Monster(name, strength, defense, hp);
             this.Monsters.Add(monster);
         }
         
         public void Start() {
-            var enemy = this.Monsters[0];
-            Console.WriteLine("You've encountered a " + enemy.Name + "! " + enemy.Strength + " Strength/" + enemy.Defense + " Defense/" + 
-            enemy.CurrentHP + " HP. What will you do?");
+            Random rnd = new Random();
+            int MonsterNumber = rnd.Next(4);
+            this.monster = this.Monsters[MonsterNumber];
+            Console.WriteLine("You've encountered a " + monster.Name + "! " + monster.Strength + " Strength/" + monster.Defense + " Defense/" +
+            monster.CurrentHP + " HP. What will you do?");
             Console.WriteLine("1. Fight");
             var input = Console.ReadLine();
             if (input == "1") {
-                this.HeroTurn(enemy);
+                this.HeroTurn(monster);
             }
             else { 
                 this.game.Main();
@@ -41,34 +59,32 @@ namespace OOP_RPG
         }
         
         public void HeroTurn(Monster monster){
-           var enemy = monster;
-           var compare = hero.Strength - enemy.Defense;
+           var compare = hero.Strength - monster.Defense;
            int damage;
            
            if(compare <= 0) {
                damage = 1;
-               enemy.CurrentHP -= damage;
+                monster.CurrentHP -= damage;
            }
            else{
                damage = compare;
-               enemy.CurrentHP -= damage;
+                monster.CurrentHP -= damage;
            }
            Console.WriteLine("You did " + damage + " damage!");
            
-           if(enemy.CurrentHP <= 0){
-               this.Win(enemy);
+           if(monster.CurrentHP <= 0){
+               this.Win(monster);
            }
            else
            {
-               this.MonsterTurn(enemy);
+               this.MonsterTurn(monster);
            }
            
         }
         
         public void MonsterTurn(Monster monster){
-           var enemy = monster;
            int damage;
-           var compare = enemy.Strength - hero.Defense;
+           var compare = monster.Strength - hero.Defense;
            if(compare <= 0) {
                damage = 1;
                hero.CurrentHP -= damage;
@@ -77,7 +93,7 @@ namespace OOP_RPG
                damage = compare;
                hero.CurrentHP -= damage;
            }
-           Console.WriteLine(enemy.Name + " does " + damage + " damage!");
+           Console.WriteLine(monster.Name + " does " + damage + " damage!");
            if(hero.CurrentHP <= 0){
                this.Lose();
            }
@@ -88,8 +104,7 @@ namespace OOP_RPG
         }
         
         public void Win(Monster monster) {
-            var enemy = monster;
-            Console.WriteLine(enemy.Name + " has been defeated! You win the battle!");
+            Console.WriteLine(monster.Name + " has been defeated! You win the battle!");
             game.Main();
         }
         
