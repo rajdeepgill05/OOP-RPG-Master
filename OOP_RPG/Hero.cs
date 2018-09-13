@@ -15,11 +15,12 @@ namespace OOP_RPG
         */
         public Hero() {
             this.ArmorsBag = new List<Armor>();
-            this.WeaponsBag = new List<Weapon>();
+            this.WeaponsBag = new List<WeaponsBag>();
             this.Strength = 10;
             this.Defense = 10;
             this.OriginalHP = 30;
             this.CurrentHP = 30;
+            Gold = 0;
         }
         
         // These are the Properties of our Class.
@@ -28,12 +29,13 @@ namespace OOP_RPG
         public int Defense { get; set; }
         public int OriginalHP { get; set; }
         public int CurrentHP { get; set; }
-        public Weapon EquippedWeapon { get; set; }
+        public WeaponsBag EquippedWeapon { get; set; }
         public Armor EquippedArmor { get; set; }
         
         public List<Armor> ArmorsBag { get; set;}
-        public List <Weapon> WeaponsBag { get; set; }
-        
+        public List <WeaponsBag> WeaponsBag { get; set; }
+        public int Gold { get; set; }
+
         //These are the Methods of our Class.
         public void ShowStats() {
             Console.WriteLine("*****" + this.Name + "*****");

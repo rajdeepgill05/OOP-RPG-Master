@@ -13,6 +13,7 @@ namespace OOP_RPG
             this.Defense = defense;
             this.OriginalHP = hp;
             this.CurrentHP = hp;
+            this.Gold = 5;
         }
 
 
@@ -21,5 +22,6 @@ namespace OOP_RPG
         public int Defense { get; set; }
         public int OriginalHP { get; set; }
         public int CurrentHP { get; set; }
+        public int Gold { get; set; }
     }
 }
