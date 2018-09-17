@@ -14,5 +14,7 @@ namespace OOP_RPG
         public int Defense { get; set; }
         public int OriginalValue { get ; set ; }
         public int ResellValue { get ; set ; }
+
+        
     }
 }

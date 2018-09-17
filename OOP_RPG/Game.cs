@@ -24,6 +24,7 @@ namespace OOP_RPG
             Console.WriteLine("1. View Stats");
             Console.WriteLine("2. View Inventory");
             Console.WriteLine("3. Fight Monster");
+            Console.Shop("4. Shop Supplies");
             var input = Console.ReadLine();
             if (input == "1") {
                 this.Stats();
@@ -33,6 +34,10 @@ namespace OOP_RPG
             }
             else if (input == "3") {
                 this.Fight();
+            }
+            else if(input == "4")
+            {
+                this.Shop();
             }
             else {
                 return;
@@ -57,7 +62,11 @@ namespace OOP_RPG
             var fight = new Fight(this.hero, this);
             fight.Start();
         }
-        
+        public void Shop()
+        {
+            var shop = new Shop(this);
+            shop.Menu();
+        }
 
     }
 }

@@ -11,16 +11,16 @@ namespace OOP_RPG
         // properties 
         public int HP { get; set; }
         public string Name { get; set; }
-        public int OriginalValue { get; set; }
-        public int ResellValue { get ; set ; }
+        public int OriginalValue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int ResellValue { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
 
         // Constructor
-        public  Potions (int hp , string name , int originalValue , int resellValue)
+        public  Potions (int hp , string name)
         {
             this.HP = hp;
             this.Name = name;
-            this.OriginalValue = originalValue;
-            this.ResellValue = resellValue;
+            
         }
     }
 }
