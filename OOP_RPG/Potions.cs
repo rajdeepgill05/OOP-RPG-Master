@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_RPG
 {
-    class Potions : Item
+    class Potion : Item
     {
         // properties 
         public int HP { get; set; }
@@ -16,7 +16,7 @@ namespace OOP_RPG
 
 
         // Constructor
-        public  Potions (int hp , string name)
+        public  Potion (int hp , string name)
         {
             this.HP = hp;
             this.Name = name;

@@ -14,6 +14,7 @@ namespace OOP_RPG
             this.OriginalHP = hp;
             this.CurrentHP = hp;
             this.Gold = 5;
+            this.Speed = 33;
         }
 
 
@@ -23,5 +24,6 @@ namespace OOP_RPG
         public int OriginalHP { get; set; }
         public int CurrentHP { get; set; }
         public int Gold { get; set; }
+        public int Speed { get; set; }
     }
 }

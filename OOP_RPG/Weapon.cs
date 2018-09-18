@@ -1,9 +1,9 @@
 using System;
 namespace OOP_RPG
 {
-    public class WeaponsBag : Item
+    public class Weapon : Item
     {
-        public WeaponsBag(string name, int strength, int originalValue, int resellValue) {
+        public Weapon(string name, int strength, int originalValue, int resellValue) {
             this.Name = name;
             this.Strength = strength;
             this.OriginalValue = originalValue;

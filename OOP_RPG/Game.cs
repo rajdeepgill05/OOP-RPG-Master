@@ -24,7 +24,7 @@ namespace OOP_RPG
             Console.WriteLine("1. View Stats");
             Console.WriteLine("2. View Inventory");
             Console.WriteLine("3. Fight Monster");
-            Console.Shop("4. Shop Supplies");
+            Console.WriteLine("4. Shop Supplies");
             var input = Console.ReadLine();
             if (input == "1") {
                 this.Stats();
